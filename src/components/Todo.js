@@ -8,14 +8,21 @@ const  Todo = (props) => {
 	const data = props.props
 
 	const deleteTodo = () => {
+		
+		var todos1 = props.todos.slice()
+		todos1 = todos1.filter((value) => {
+			console.log(value._id == data._id)
+			return value._id !== data._id;
+		})
+		console.log(todos1)
+		props.getTodo(todos1)
 		fetch(url+`/${data._id}`, {
 			method:"DELETE"
 		})
-
-	 fetch(url)
-	    .then(response => response.json())
-	    .then(data => props.getTodo(data))
-	    .catch(err => console.log(err))
+		 // fetch(url)
+		 //    .then(response => response.json())
+		 //    .then(data => props.getTodo(data))
+		 //    .catch(err => console.log(err))
     // console.log(todos);
 
 	}
@@ -41,9 +48,12 @@ const  Todo = (props) => {
 }
 
 const container = {
-textAlign:"Center",
-  position: "relative",
-	background:"red",
+	margin:"0px 10%",
+	height:"fit-content",
+	textAlign:"Center",
+	borderRadius:"2%",
+  	position: "relative",
+	background:"#8c3dff39",
 	color:"black"
 
 }
@@ -51,19 +61,28 @@ const heading = {
 
 	fontSize:"24px",
 	fontWeight:"600",
-	color:"white",
+	color:"#777",
 	fontFamily:"Courier New Courier monospace"
 }
 
 const button = {
- position:"absolute",
+    background: 'Linear-gradient(45deg,#ff434380 30% ,#ff434670 70%)',
+    border: 0,
+    borderRadius: '5%',
+    boxShadow: '0 1px 1px 1px #7fd9f0',
+    
+    position:"absolute",
   right: 0,
   top: 0,
   height:" 100%",
   
 }
 const description = {
+	marginTop:"-1%",
+	
 	textAlign:"left",
+	fontSize:"22px",
+	color:"white"
 }
 
 export default Todo;

@@ -20,6 +20,12 @@ const AddTodo = (props) => {
         console.log("added activity");
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
+        var todos1 = props.todos.slice()
+        todos1.push({"title":data.name, "description":data.description})
+        console.log(todos1)
+        console.log(props.todos)
+        props.getTodo(todos1)
+        console.log(props.todos)
 
         var raw = JSON.stringify({"title":data.name,"description":data.description});
 
@@ -35,11 +41,11 @@ const AddTodo = (props) => {
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
 
-        fetch(url)
-        .then(response => response.json())
-        .then(data => props.getTodo(data))
-        .catch(err => console.log(err))
-        // console.log(todos);
+        // fetch(url)
+        // .then(response => response.json())
+        // .then(data => props.getTodo(data))
+        // .catch(err => console.log(err))
+        // // console.log(todos);
     
     }
 
@@ -55,10 +61,12 @@ const AddTodo = (props) => {
                     size="small"
                 />
             </div>
+            <br />
             <div className="input-section">
             
                 <TextField
-
+                    multiline
+                    rowsMax={4}
                     required
                     onChange={(e) => handleChange(e)}
                     name="description"
