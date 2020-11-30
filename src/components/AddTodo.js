@@ -49,22 +49,26 @@ const AddTodo = (props) => {
     
     }
 
+    if(props.show){
     return (
-        <div className={"add"}>
+
+        <div  style={add}className={"add"}>
             <div className="input-section">
                 <TextField
+                    style={width_full}
                     required
                     onChange={(e) => handleChange(e)}
                     name="name"
                     variant="outlined"
                     label="Activity Name"
-                    size="small"
+                    size="large"
                 />
             </div>
             <br />
             <div className="input-section">
             
                 <TextField
+                    style={width_full}
                     multiline
                     rowsMax={4}
                     required
@@ -72,7 +76,7 @@ const AddTodo = (props) => {
                     name="description"
                     label="Description"
                     variant="outlined"
-                    size="small"
+                    size="x-large"
                 />
             </div>
             <Button
@@ -83,7 +87,17 @@ const AddTodo = (props) => {
             </Button>
         </div>
     )
+}
+return ""
 };
+const add = {
+    textAlign:"center",
+    width:"100vw",
+    height:"100vh",
+    position:"fixed",
+    top:"40vh",
+    // backgroundColor:"#00000090"
+}
 const buttonStyle = {
     background: 'Linear-gradient(45deg,#b8f8f8 50% ,  #91ffff 50%)',
     border: 0,
@@ -92,7 +106,11 @@ const buttonStyle = {
     height: 38,
     marginTop:'5px',
     padding: '22px 0px',
+
     
+}
+const width_full = {
+    width:"80vw"
 }
 
 export default AddTodo;
