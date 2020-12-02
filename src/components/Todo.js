@@ -8,7 +8,9 @@ const  Todo = (props) => {
 	const data = props.props
 
 	const deleteTodo = () => {
-		
+		fetch(url+`/${data._id}`, {
+			method:"DELETE"
+		})
 		var todos1 = props.todos.slice()
 		todos1 = todos1.filter((value) => {
 			console.log(value._id == data._id)
@@ -16,15 +18,13 @@ const  Todo = (props) => {
 		})
 		console.log(todos1)
 		props.getTodo(todos1)
-		fetch(url+`/${data._id}`, {
-			method:"DELETE"
-		})
+		
 		 // fetch(url)
 		 //    .then(response => response.json())
 		 //    .then(data => props.getTodo(data))
 		 //    .catch(err => console.log(err))
     // console.log(todos);
-
+    	
 	}
 	 return (
 	 	<>

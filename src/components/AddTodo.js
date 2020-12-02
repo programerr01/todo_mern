@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
-import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AddIcon from '@material-ui/icons/Add';
 import url from "../Url";
 const AddTodo = (props) => {
     const [data, setData] = useState({
@@ -35,7 +35,7 @@ const AddTodo = (props) => {
           body: raw,
           redirect: 'follow'
         };
-
+        props.changeShow(!props.show);
         fetch(url, requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
@@ -51,7 +51,10 @@ const AddTodo = (props) => {
 
     if(props.show){
     return (
-
+        <div style={container}>
+        <div style={close}className="cross-icon">
+            <button href="#" id="close">X </button>
+        </div>
         <div  style={add}className={"add"}>
             <div className="input-section">
                 <TextField
@@ -59,9 +62,11 @@ const AddTodo = (props) => {
                     required
                     onChange={(e) => handleChange(e)}
                     name="name"
-                    variant="outlined"
+                   
                     label="Activity Name"
                     size="large"
+                    variant="filled"
+
                 />
             </div>
             <br />
@@ -70,33 +75,52 @@ const AddTodo = (props) => {
                 <TextField
                     style={width_full}
                     multiline
+                  
                     rowsMax={4}
                     required
                     onChange={(e) => handleChange(e)}
                     name="description"
                     label="Description"
                     variant="outlined"
-                    size="x-large"
+                    size="large"
                 />
             </div>
             <Button
                 size="large"
                 style={buttonStyle}
                 onClick={addActivity}
-            > <AddCircleIcon  fontSize="large"/>
+            > <AddIcon  fontSize="large"/>
             </Button>
+        </div>
         </div>
     )
 }
 return ""
 };
+const close ={
+    position:"fixed",
+    top:"0px",
+    left:"50vw",
+
+}
+
+const container = {
+    position:"fixed",
+    top:"0px",
+    left:"0px",
+    width:"100vw",
+    height:"100vh",
+    backgroundColor:"#00000080",
+    zIndex:"1"
+
+}
 const add = {
+    zIndex:"2",
     textAlign:"center",
     width:"100vw",
     height:"100vh",
     position:"fixed",
     top:"40vh",
-    // backgroundColor:"#00000090"
 }
 const buttonStyle = {
     background: 'Linear-gradient(45deg,#b8f8f8 50% ,  #91ffff 50%)',
@@ -110,6 +134,7 @@ const buttonStyle = {
     
 }
 const width_full = {
+    background:"#dddfff20",
     width:"80vw"
 }
 

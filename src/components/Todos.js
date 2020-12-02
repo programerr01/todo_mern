@@ -23,13 +23,13 @@ const Todos = () => {
 		<>
 		{todos.map((each) => (
 			// {console.log(each)}
-			<Todo todos={todos} getTodo={getTodo} props={each} />
+			<Todo show={show}todos={todos} getTodo={getTodo} props={each} />
 		)
 		)}
 		<div style={align_item}>
         <Button onClick={() => changeShow(!show)} style={button_style}>Add Activity</Button>
         </div>
-		<AddTodo show={show} todos={todos} getTodo={getTodo} />
+		<AddTodo show={show}  changeShow={changeShow} todos={todos} getTodo={getTodo} />
 		</>
 
 	)

@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+button{
+  background-color: transparent;
+}
+#close{
+  font-size: 30px,
+  background-color: red;
+  color:red;
+}
