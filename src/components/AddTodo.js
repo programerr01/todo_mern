@@ -4,6 +4,7 @@ import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 import url from "../Url";
+import CancelIcon from '@material-ui/icons/Cancel';
 const AddTodo = (props) => {
     const [data, setData] = useState({
         name: "",
@@ -48,12 +49,15 @@ const AddTodo = (props) => {
         // // console.log(todos);
     
     }
+    function closeDialog(){
+        props.changeShow(!props.show);        
+    }
 
     if(props.show){
     return (
         <div style={container}>
         <div style={close}className="cross-icon">
-            <button href="#" id="close">X </button>
+            <button style={btn}onClick={(e) => closeDialog()} href="#" id="close"><CancelIcon fontSize="large" /> </button>
         </div>
         <div  style={add}className={"add"}>
             <div className="input-section">
@@ -103,7 +107,11 @@ const close ={
     left:"50vw",
 
 }
-
+const btn = {
+    fontSize:"50px",
+    backgroundColor:"transparent",
+    border:"none"
+}
 const container = {
     position:"fixed",
     top:"0px",
@@ -134,7 +142,7 @@ const buttonStyle = {
     
 }
 const width_full = {
-    background:"#dddfff20",
+    background:"#dddfff70",
     width:"80vw"
 }
 
